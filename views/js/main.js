@@ -506,9 +506,10 @@ function updatePositions() {
   var items = document.getElementsByClassName('mover');
  
 //move outside the loop so it does not have to qury the DOM eveytime
-   var things = document.body.scrollTop / 1250;
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((things) + (i % 5));
+   var phase;
+   var top = (document.body.scrollTop || document.documentElement.scrollTop) / 1250;
+  for (var i = 0, len = items.length, phase; i < len; i++) {
+    var phase = Math.sin(top + i % 5);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -527,20 +528,21 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
-  var s = 256;
-  //number of pizza needed to fill the browser
-   var pizzaNum = (window.innerHeight / s) * cols;
-  for (var i = 0; i < pizzaNum; i++) {
-  var elem = document.createElement('img');
-    elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("movingPizzas1").appendChild(elem);
-  }
-  
-  updatePositions();
+    var cols = 8;
+    var s = 256;
+    //number of pizza needed to fill the browser
+    var pizzaNum = (window.innerHeight / s) * cols;
+    var movingPizzas = document.getElementById('movingPizzas1');
+    for (var i = 0; i < pizzaNum; i++) {
+        var elem = document.createElement('img');
+        elem.className = 'mover';
+        elem.src = "images/pizza.png";
+        elem.style.height = "100px";
+        elem.style.width = "73.333px";
+        elem.basicLeft = (i % cols) * s;
+        elem.style.top = (Math.floor(i / cols) * s) + 'px';
+        movingPizzas.appendChild(elem);
+    }
+
+    updatePositions();
 });
