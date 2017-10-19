@@ -506,7 +506,7 @@ function updatePositions() {
   var items = document.getElementsByClassName('mover');
  
 //move outside the loop so it does not have to qury the DOM eveytime
-   var phase;
+   var phase;//Declaring the phase variable in the initialisation
    var top = (document.body.scrollTop || document.documentElement.scrollTop) / 1250;
   for (var i = 0, len = items.length, phase; i < len; i++) {
     var phase = Math.sin(top + i % 5);
@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var s = 256;
     //number of pizza needed to fill the browser
     var pizzaNum = (window.innerHeight / s) * cols;
-    var movingPizzas = document.getElementById('movingPizzas1');
+    var movingPizzas = document.getElementById('movingPizzas1');//moved it out the loop
     for (var i = 0; i < pizzaNum; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
