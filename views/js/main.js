@@ -509,7 +509,7 @@ function updatePositions() {
    //Declaring the phase variable in the initialisation
    var top = (document.body.scrollTop || document.documentElement.scrollTop) / 1250;
   for (var i = 0, len = items.length, phase; i < len; i++) {
-    var phase = Math.sin(top + i % 5);
+    phase = Math.sin(top + i % 5);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
