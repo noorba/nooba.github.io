@@ -15,7 +15,12 @@ it will provide you with url that you can usein page testing.
   - Move google fonts to the body.
   - Images Compress
   - Async javaScript
-
+  
+# **NEW **changes Made
+- beaautifying from line 530
+- Move `var movingPizzas = document.getElementById('movingPizzas1');` outsidethe loop.
+- Declaring the phase variable  `(var phase;) `in the initialisation of the for loop
+- font optimation using Web Font Loader 
 
 
 
